@@ -20,7 +20,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
             game.showLongText("Okay I lied, but I still caught you didn't I? I'm a box of text not a monster", DialogLayout.Top)
             voiceLines2 += 1
         } else if (voiceLines2 == 2) {
-            game.showLongText("", DialogLayout.Top)
+            game.showLongText("Okay I lied again, I am a horrible box of text, but watching you die is funny, like this", DialogLayout.Top)
             voiceLines2 += 1
         } else if (voiceLines2 == 3) {
             game.showLongText("See, just an ordinary Platformer, just like I told you", DialogLayout.Top)
@@ -74,8 +74,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
         } else if (deathline == 3) {
             game.showLongText("Really?", DialogLayout.Top)
         }
-    } else if (currentlevel == 0) {
-    	
+    } else if (currentlevel == 1) {
+        if (deathline == 1) {
+            game.showLongText("I cannot believe you just died", DialogLayout.Top)
+        } else if (deathline == 2) {
+            game.showLongText("You really suck as platformers don't you?", DialogLayout.Top)
+        } else if (deathline == 3) {
+            game.showLongText("Gut Gud, do people even still say that?", DialogLayout.Top)
+        }
     } else {
     	
     }
@@ -96,6 +102,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
             game.showLongText("I told you not to touch it", DialogLayout.Top)
         } else if (deathline == 3) {
             game.showLongText("Really?", DialogLayout.Top)
+        }
+    } else if (currentlevel == 1) {
+        if (deathline == 1) {
+            game.showLongText("I cannot believe you just died", DialogLayout.Top)
+        } else if (deathline == 2) {
+            game.showLongText("You really suck as platformers don't you?", DialogLayout.Top)
+        } else if (deathline == 3) {
+            game.showLongText("Gut Gud, do people even still say that?", DialogLayout.Top)
         }
     } else {
     	
