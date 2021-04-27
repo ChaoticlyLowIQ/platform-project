@@ -20,19 +20,27 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
             game.showLongText("Okay I lied, but I still caught you didn't I? I'm a box of text not a monster", DialogLayout.Top)
             voiceLines2 += 1
         } else if (voiceLines2 == 2) {
-            game.showLongText("Okay I lied again, I am a horrible box of text, but watching you die is funny, like this", DialogLayout.Top)
+            game.showLongText("Okay I lied again, I am a horrible box of text, but watching you die is funny", DialogLayout.Top)
             voiceLines2 += 1
         } else if (voiceLines2 == 3) {
-            game.showLongText("See, just an ordinary Platformer, just like I told you", DialogLayout.Top)
+            game.showLongText("I swear I didn't do anything this time", DialogLayout.Top)
             voiceLines2 += 1
+        } else if (voiceLines2 == 4) {
+            game.showLongText("Why do you keep believing me?", DialogLayout.Top)
+            voiceLines2 += 1
+        } else if (voiceLines2 == 5) {
+            game.showLongText("alright, how are you doing that? That's not supposed to happen", DialogLayout.Top)
+            voiceLines2 += 1
+        } else if (voiceLines2 == 6) {
+            game.showLongText("You see that coin? It's worth 2 points instead of one", DialogLayout.Top)
+            voiceLines2 += 1
+        } else {
+        	
         }
     } else {
     	
     }
     tiles.setTileAt(location, assets.tile`transparency16`)
-})
-scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    jumps = 0
 })
 function setLevelTileMap (num: number) {
     if (num == 0) {
@@ -57,6 +65,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
     music.baDing.play()
     tiles.setTileAt(location, assets.tile`transparency16`)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
+    tiles.setTileAt(location, assets.tile`transparency16`)
+    if (currentlevel == 1) {
+        game.showLongText("I lied, it kills you", DialogLayout.Top)
+        Jeff.setPosition(15, 65)
+    } else {
+    	
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
     if (currentlevel == 0) {
         Jeff.setPosition(15, 210)
@@ -80,7 +97,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
         } else if (deathline == 2) {
             game.showLongText("You really suck as platformers don't you?", DialogLayout.Top)
         } else if (deathline == 3) {
-            game.showLongText("Gut Gud, do people even still say that?", DialogLayout.Top)
+            game.showLongText("That kills you, so don't do it, simple", DialogLayout.Top)
         }
     } else {
     	
@@ -105,11 +122,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
         }
     } else if (currentlevel == 1) {
         if (deathline == 1) {
-            game.showLongText("I cannot believe you just died", DialogLayout.Top)
+            game.showLongText("You suck", DialogLayout.Top)
         } else if (deathline == 2) {
-            game.showLongText("You really suck as platformers don't you?", DialogLayout.Top)
+            game.showLongText("Fun Fact: Lava is bad for you health", DialogLayout.Top)
         } else if (deathline == 3) {
-            game.showLongText("Gut Gud, do people even still say that?", DialogLayout.Top)
+            game.showLongText("My grandmother can play video games better then you, and she's dead", DialogLayout.Top)
         }
     } else {
     	
@@ -172,4 +189,9 @@ voiceLine = 0
 voiceLines2 = 0
 game.onUpdate(function () {
     Jeff.x += controller.dx()
+})
+forever(function () {
+    if (Jeff.isHittingTile(CollisionDirection.Bottom)) {
+        jumps = 0
+    }
 })
