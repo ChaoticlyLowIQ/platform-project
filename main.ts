@@ -2,43 +2,50 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
     if (currentlevel == 0) {
         if (voiceLine == 0) {
             game.showLongText("This is just an ordinary platformer", DialogLayout.Top)
-            voiceLine += 1
+            voiceLine = 1
         } else if (voiceLine == 1) {
             game.showLongText("See look a coin, just pick it up", DialogLayout.Top)
-            voiceLine += 1
+            voiceLine = 2
         } else if (voiceLine == 2) {
             game.showLongText("Also, don't touch that lava. Or do I can't stop you, i'm just a box of text", DialogLayout.Top)
-            voiceLine += 1
+            voiceLine = 3
         } else if (voiceLine == 3) {
             game.showLongText("See, just an ordinary Platformer, just like I told you", DialogLayout.Top)
         }
     } else if (currentlevel == 1) {
         if (voiceLines2 == 0) {
             game.showLongText("Don't worry I won't pull anything funny because this is just an ordinary platformer", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 1
         } else if (voiceLines2 == 1) {
             game.showLongText("Okay I lied, but I still caught you didn't I? I'm a box of text not a monster", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 2
         } else if (voiceLines2 == 2) {
             game.showLongText("Okay I lied again, I am a horrible box of text, but watching you die is funny", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 3
         } else if (voiceLines2 == 3) {
             game.showLongText("I swear I didn't do anything this time", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 4
         } else if (voiceLines2 == 4) {
             game.showLongText("Why do you keep believing me?", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 5
         } else if (voiceLines2 == 5) {
             game.showLongText("alright, how are you doing that? That's not supposed to happen", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 6
         } else if (voiceLines2 == 6) {
             game.showLongText("You see that coin? It's worth 2 points instead of one", DialogLayout.Top)
-            voiceLines2 += 1
+            voiceLines2 = 7
+        } else if (voiceLines2 == 7) {
+            game.showLongText("Choose wisely, one of the paths don't work", DialogLayout.Top)
+        }
+    } else if (currentlevel == 2) {
+        if (voiceline3 == 0) {
+            game.showLongText("Vertical levels are hard enough, I won't do anything to you", DialogLayout.Bottom)
+            voiceline3 = 1
+        } else if (voiceline3 == 1) {
+        	
         } else {
         	
         }
-    } else {
-    	
     }
     tiles.setTileAt(location, assets.tile`transparency16`)
 })
@@ -50,7 +57,8 @@ function setLevelTileMap (num: number) {
         tiles.setTilemap(tilemap`level2`)
         Jeff.setPosition(15, 65)
     } else if (num == 2) {
-    	
+        tiles.setTilemap(tilemap`level8`)
+        Jeff.setPosition(250, 2375)
     }
     hasNextLevel()
 }
@@ -68,10 +76,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
     tiles.setTileAt(location, assets.tile`transparency16`)
     if (currentlevel == 1) {
-        game.showLongText("I lied, it kills you", DialogLayout.Top)
-        Jeff.setPosition(15, 65)
-    } else {
-    	
+        if (coinline == 0) {
+            game.showLongText("I lied, it kills you", DialogLayout.Top)
+            Jeff.setPosition(15, 65)
+            coinline += 1
+        } else {
+            Jeff.setPosition(15, 65)
+            game.showLongText("it still kills you, don't know why you thought that would change", DialogLayout.Top)
+        }
+    } else if (currentlevel == 2) {
+        Jeff.setPosition(250, 2375)
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
@@ -80,7 +94,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
     } else if (currentlevel == 1) {
         Jeff.setPosition(15, 65)
     } else if (currentlevel == 2) {
-    	
+        Jeff.setPosition(250, 2375)
     }
     deathline = randint(1, 3)
     if (currentlevel == 0) {
@@ -99,7 +113,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
         } else if (deathline == 3) {
             game.showLongText("That kills you, so don't do it, simple", DialogLayout.Top)
         }
-    } else {
+    } else if (false) {
     	
     }
 })
@@ -109,7 +123,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     } else if (currentlevel == 1) {
         Jeff.setPosition(15, 65)
     } else if (currentlevel == 2) {
-    	
+        Jeff.setPosition(250, 2375)
     }
     deathline = randint(1, 3)
     if (currentlevel == 0) {
@@ -128,7 +142,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
         } else if (deathline == 3) {
             game.showLongText("My grandmother can play video games better then you, and she's dead", DialogLayout.Top)
         }
-    } else {
+    } else if (false) {
     	
     }
 })
@@ -146,6 +160,8 @@ function hasNextLevel () {
     return currentlevel != levelcount
 }
 let deathline = 0
+let coinline = 0
+let voiceline3 = 0
 let voiceLines2 = 0
 let voiceLine = 0
 let levelcount = 0
@@ -178,15 +194,17 @@ Jeff = sprites.create(img`
     ........................
     ........................
     `, SpriteKind.Player)
-scene.setBackgroundColor(1)
+scene.setBackgroundColor(11)
 scene.cameraFollowSprite(Jeff)
 Jeff.ay = 300
 jumps = 0
-currentlevel = 0
-levelcount = 3
+currentlevel = 2
+levelcount = 2
 setLevelTileMap(currentlevel)
 voiceLine = 0
 voiceLines2 = 0
+voiceline3 = 0
+coinline = 0
 game.onUpdate(function () {
     Jeff.x += controller.dx()
 })
