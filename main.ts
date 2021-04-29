@@ -45,9 +45,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
             game.showLongText("So, I lied again, not surprising, but how do you keep falling for these? ", DialogLayout.Top)
             voiceline3 = 2
         } else if (voiceline3 == 2) {
-        	
-        } else {
-        	
+            game.showLongText("This path has two paths, one is really and one is fake, choose wisely", DialogLayout.Top)
+            voiceline3 = 3
+        } else if (voiceline3 == 3) {
+            game.showLongText("Wrong choice", DialogLayout.Top)
+            voiceline3 = 4
+        } else if (voiceline3 == 4) {
+            game.showLongText("There are another two paths, one will lead you to the win, the other will send you to the start", DialogLayout.Top)
+            voiceline3 = 5
+        } else if (voiceline3 == 5) {
+            game.showLongText("Congrats you did it, just like I told you, it was just a normal platformer", DialogLayout.Top)
         }
     }
     tiles.setTileAt(location, assets.tile`transparency16`)
@@ -61,10 +68,14 @@ function setLevelTileMap (num: number) {
         Jeff.setPosition(15, 65)
     } else if (num == 2) {
         tiles.setTilemap(tilemap`level8`)
-        Jeff.setPosition(250, 2375)
+        Jeff.setPosition(250, 1575)
     }
     hasNextLevel()
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, location) {
+    tiles.setTileAt(location, assets.tile`transparency16`)
+    voiceline3 = 2
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (jumps < 2) {
         Jeff.vy += -100
@@ -75,6 +86,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
     info.changeScoreBy(1)
     music.baDing.play()
     tiles.setTileAt(location, assets.tile`transparency16`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, location) {
+    game.showLongText("Wrong path, better start climbing", DialogLayout.Bottom)
+    Jeff.setPosition(250, 1575)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
     tiles.setTileAt(location, assets.tile`transparency16`)
@@ -88,11 +103,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, l
             game.showLongText("it still kills you, don't know why you thought that would change", DialogLayout.Top)
         }
     } else if (currentlevel == 2) {
-        Jeff.setPosition(250, 2375)
+        Jeff.setPosition(250, 1575)
     }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-	
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     if (currentlevel == 0) {
@@ -100,7 +112,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     } else if (currentlevel == 1) {
         Jeff.setPosition(15, 65)
     } else if (currentlevel == 2) {
-        Jeff.setPosition(250, 2375)
+        Jeff.setPosition(250, 1575)
     }
     deathline = randint(1, 3)
     if (currentlevel == 0) {
@@ -136,12 +148,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, l
         game.splash("Next Level")
         setLevelTileMap(currentlevel)
     } else {
-        game.over(true, effects.melt)
+        game.over(true, effects.confetti)
     }
 })
 function hasNextLevel () {
     return currentlevel != levelcount
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
+    tiles.setTileAt(location, assets.tile`transparency16`)
+    voiceline3 = 4
+})
 let deathline = 0
 let coinline = 0
 let voiceline3 = 0
@@ -181,8 +197,8 @@ scene.setBackgroundColor(11)
 scene.cameraFollowSprite(Jeff)
 Jeff.ay = 300
 jumps = 0
-currentlevel = 2
-levelcount = 2
+currentlevel = 0
+levelcount = 3
 setLevelTileMap(currentlevel)
 voiceLine = 0
 voiceLines2 = 0
