@@ -42,6 +42,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
             game.showLongText("Vertical levels are hard enough, I won't do anything to you", DialogLayout.Bottom)
             voiceline3 = 1
         } else if (voiceline3 == 1) {
+            game.showLongText("So, I lied again, not surprising, but how do you keep falling for these? ", DialogLayout.Top)
+            voiceline3 = 2
+        } else if (voiceline3 == 2) {
         	
         } else {
         	
@@ -89,33 +92,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, l
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-    if (currentlevel == 0) {
-        Jeff.setPosition(15, 210)
-    } else if (currentlevel == 1) {
-        Jeff.setPosition(15, 65)
-    } else if (currentlevel == 2) {
-        Jeff.setPosition(250, 2375)
-    }
-    deathline = randint(1, 3)
-    if (currentlevel == 0) {
-        if (deathline == 1) {
-            game.showLongText("I might a disembodied voice, but I know a thing or two", DialogLayout.Top)
-        } else if (deathline == 2) {
-            game.showLongText("I told you not to touch it", DialogLayout.Top)
-        } else if (deathline == 3) {
-            game.showLongText("Really?", DialogLayout.Top)
-        }
-    } else if (currentlevel == 1) {
-        if (deathline == 1) {
-            game.showLongText("I cannot believe you just died", DialogLayout.Top)
-        } else if (deathline == 2) {
-            game.showLongText("You really suck as platformers don't you?", DialogLayout.Top)
-        } else if (deathline == 3) {
-            game.showLongText("That kills you, so don't do it, simple", DialogLayout.Top)
-        }
-    } else if (false) {
-    	
-    }
+	
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     if (currentlevel == 0) {
@@ -142,8 +119,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
         } else if (deathline == 3) {
             game.showLongText("My grandmother can play video games better then you, and she's dead", DialogLayout.Top)
         }
-    } else if (false) {
-    	
+    } else if (currentlevel == 2) {
+        if (deathline == 1) {
+            game.showLongText("Yes, touching lava kills you", DialogLayout.Top)
+        } else if (deathline == 2) {
+            game.showLongText("Fun Fact: You are bad at this game", DialogLayout.Top)
+        } else if (deathline == 3) {
+            game.showLongText("There is like 5 blocks of lava on this map", DialogLayout.Top)
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
