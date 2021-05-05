@@ -45,7 +45,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
             game.showLongText("So, I lied again, not surprising, but how do you keep falling for these? ", DialogLayout.Top)
             voiceline3 = 2
         } else if (voiceline3 == 2) {
-            game.showLongText("This path has two paths, one is real and one is fake, choose wisely", DialogLayout.Top)
+            game.showLongText("This path has two paths, one is really and one is fake, choose wisely", DialogLayout.Top)
             voiceline3 = 3
         } else if (voiceline3 == 3) {
             game.showLongText("Wrong choice", DialogLayout.Top)
@@ -95,82 +95,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, 
     game.showLongText("Wrong path, better start climbing", DialogLayout.Bottom)
     Jeff.setPosition(250, 1575)
 })
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    Jeff,
-    [img`
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e e f f . . . . 
-        . . . f 2 2 2 e d d 4 . . . . . 
-        . . . f 2 2 2 e d d e . . . . . 
-        . . . f 5 5 4 f e e f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . . f f f . . . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d e e e e e f . . . 
-        . . . f e 4 e d d 4 f . . . . . 
-        . . . f 2 2 e d d e f . . . . . 
-        . . f f 5 5 f e e f f f . . . . 
-        . . f f f f f f f f f f . . . . 
-        . . . f f f . . . f f . . . . . 
-        `,img`
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e e f f . . . . 
-        . . . f 2 2 2 e d d 4 . . . . . 
-        . . . f 2 2 2 e d d e . . . . . 
-        . . . f 5 5 4 f e e f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . . f f f . . . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e d d 4 . . . . 
-        . . . f 2 2 2 2 e d d e . . . . 
-        . . f f 5 5 4 4 f e e f . . . . 
-        . . f f f f f f f f f f . . . . 
-        . . . f f f . . . f f . . . . . 
-        `],
-    200,
-    true
-    )
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
     tiles.setTileAt(location, assets.tile`transparency16`)
     if (currentlevel == 1) {
@@ -185,7 +109,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, l
     } else if (currentlevel == 2) {
         Jeff.setPosition(250, 1575)
     }
-    deaths += 1
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, location) {
     tiles.setTileAt(location, assets.tile`transparency16`)
@@ -195,88 +118,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
     tiles.setTileAt(location, assets.tile`transparency16`)
     voiceLines2 = 5
 })
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    Jeff,
-    [img`
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e 4 d d d d f . . . 
-        . . . . f f e e 4 4 4 e f . . . 
-        . . . . . 4 d d e 2 2 2 f . . . 
-        . . . . . e d d e 2 2 2 f . . . 
-        . . . . . f e e f 4 5 5 f . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . . . . f f f . . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e e e d d d f . . . 
-        . . . . . f 4 d d e 4 e f . . . 
-        . . . . . f e d d e 2 2 f . . . 
-        . . . . f f f e e f 5 5 f f . . 
-        . . . . f f f f f f f f f f . . 
-        . . . . . f f . . . f f f . . . 
-        `,img`
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e 4 d d d d f . . . 
-        . . . . f f e e 4 4 4 e f . . . 
-        . . . . . 4 d d e 2 2 2 f . . . 
-        . . . . . e d d e 2 2 2 f . . . 
-        . . . . . f e e f 4 5 5 f . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . . . . f f f . . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e 4 d d d d f . . . 
-        . . . . 4 d d e 4 4 4 e f . . . 
-        . . . . e d d e 2 2 2 2 f . . . 
-        . . . . f e e f 4 4 5 5 f f . . 
-        . . . . f f f f f f f f f f . . 
-        . . . . . f f . . . f f f . . . 
-        `],
-    200,
-    true
-    )
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
     tiles.setTileAt(location, assets.tile`transparency16`)
     voiceLines2 = 6
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    deaths += 1
     if (currentlevel == 0) {
         Jeff.setPosition(15, 210)
     } else if (currentlevel == 1) {
@@ -318,7 +164,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, l
         game.splash("Next Level")
         setLevelTileMap(currentlevel)
     } else {
-        game.splash("you died " + deaths + " times")
         game.over(true, effects.confetti)
     }
 })
@@ -334,7 +179,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, 
     voiceline3 = 4
 })
 let deathline = 0
-let deaths = 0
 let coinline = 0
 let voiceline3 = 0
 let voiceLines2 = 0
@@ -344,22 +188,30 @@ let currentlevel = 0
 let jumps = 0
 let Jeff: Sprite = null
 Jeff = sprites.create(img`
-    . . . . . . f f f f f f . . . . 
-    . . . . f f e e e e f 2 f . . . 
-    . . . f f e e e e f 2 2 2 f . . 
-    . . . f e e e f f e e e e f . . 
-    . . . f f f f e e 2 2 2 2 e f . 
-    . . . f e 2 2 2 f f f f e 2 f . 
-    . . f f f f f f f e e e f f f . 
-    . . f f e 4 4 e b f 4 4 e e f . 
-    . . f e e 4 d 4 1 f d d e f . . 
-    . . . f e e e 4 d d d d f . . . 
-    . . . . f f e e 4 4 4 e f . . . 
-    . . . . . 4 d d e 2 2 2 f . . . 
-    . . . . . e d d e 2 2 2 f . . . 
-    . . . . . f e e f 4 5 5 f . . . 
-    . . . . . . f f f f f f . . . . 
-    . . . . . . . f f f . . . . . . 
+    ........................
+    ....ffffff..............
+    ..fffffff6f.............
+    .fffffff666f............
+    .fffffffffff...cc.......
+    .ffffff6666ff.cdc.......
+    .ff666fffff6fcddc.......
+    ffffffffffffcddc........
+    fff99fbf99fcddc.........
+    fff9d91fddfcdc..........
+    .ffff9dddfdccc..........
+    ..ffff99f9ddf...........
+    ...f666699ff............
+    ...f6666f6f.............
+    ...f999955f.............
+    ....ffffff..............
+    .....fff................
+    ........................
+    ........................
+    ........................
+    ........................
+    ........................
+    ........................
+    ........................
     `, SpriteKind.Player)
 scene.setBackgroundColor(11)
 scene.cameraFollowSprite(Jeff)
@@ -372,7 +224,6 @@ voiceLine = 0
 voiceLines2 = 0
 voiceline3 = 0
 coinline = 0
-deaths = 0
 game.onUpdate(function () {
     Jeff.x += controller.dx()
 })
